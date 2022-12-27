@@ -187,11 +187,11 @@ def start():
 
     fig = plt.figure(figsize=(16, 6.4))
     ax = fig.add_subplot(111, autoscale_on=False,
-                        xlim=(-1.5, 0.5), ylim=(-0.4, 1.2))
+                        xlim=(-1.5, 1.5), ylim=(-0.4, 1.2))
     ax.set_xlabel('position')
     ax.get_yaxis().set_visible(False)
 
-    crane_rail, = ax.plot([-1.5, 0.5], [-0.2, -0.2], 'k-', lw=4)
+    crane_rail, = ax.plot([-1.5, 1.5], [-0.2, -0.2], 'k-', lw=4)
     start, = ax.plot([-1, -1], [-1.5, 1.5], 'k:', lw=2)
     objective, = ax.plot([0, 0], [-0.5, 1.5], 'k:', lw=2)
     mass1, = ax.plot([], [], linestyle='None', marker='s',
@@ -205,8 +205,6 @@ def start():
                     markerfacecolor='k')
     time_template = 'time = %.1fs'
     time_text = ax.text(0.05, 0.9, '', transform=ax.transAxes)
-    start_text = ax.text(-1.06, -0.3, 'start', ha='right')
-    end_text = ax.text(0.06, -0.3, 'objective', ha='left')
 
 
     def init():
