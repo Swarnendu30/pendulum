@@ -62,7 +62,7 @@ def q_learning(env, model, episodes, gamma=0.9,epsilon=0.3, eps_decay=0.99,repla
     
     final = []
     memory = []
-    global episodes
+   
     episode_i = 0
     sum_total_replay_time = 0
     for episode in range(episodes):
