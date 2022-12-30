@@ -7,7 +7,7 @@ import numpy as np
 import time
 
 env = gym.envs.make("CartPole-v1")
-
+episodes = 500
 def plot_res(values, title=''):
     f, ax = plt.subplots(nrows=1, ncols=2, figsize=(12, 5))
     f.suptitle(title)
@@ -62,6 +62,7 @@ def q_learning(env, model, episodes, gamma=0.9,epsilon=0.3, eps_decay=0.99,repla
     
     final = []
     memory = []
+    global episodes
     episode_i = 0
     sum_total_replay_time = 0
     for episode in range(episodes):
@@ -118,7 +119,7 @@ def q_learning(env, model, episodes, gamma=0.9,epsilon=0.3, eps_decay=0.99,repla
 
         epsilon = max(epsilon * eps_decay, 0.01)
         final.append(total)
-        if(episode_i==150):
+        if(episode_i==episodes):
             plot_res(final, title)
             env.render()
 
@@ -131,7 +132,6 @@ def q_learning(env, model, episodes, gamma=0.9,epsilon=0.3, eps_decay=0.99,repla
 
 n_state = env.observation_space.shape[0]
 n_action = env.action_space.n
-episodes = 150
 n_hidden = 50
 lr = 0.001
 simple_dqn = DQN(n_state, n_action, n_hidden, lr)
